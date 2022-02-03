@@ -53,8 +53,18 @@ function adder ( _array ) {
   return sum;
 }
 
+// New function
 function averg ( _array ) {
-  // in here you must use adder
+  let sum = 0;
+  for (let i = 0; i < _array.length; i++) { 
+    sum = sum + _array[i];
+  }
+  let answer = sum / _array.length;
+  return answer;
 }
+
+console.log( averg([1, 2, 3, 4, 5]) );
+console.log( averg([4,2]) );
+console.log( averg([-1,1]) );
 
 
