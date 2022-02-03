@@ -74,19 +74,25 @@ function button () {
 //      What will be logged in the lines below?
 // let a = "23";
 // console.log( parseInt( a ) + 1 );
+// Answer: 24
 // console.log( a + 1 );
+// Answer: 231
 
 
 // E11: Code a function (F1) that adds 23 to the number in the input field and
 //      logs the result to the console.
 
+function f1 (){
+    let number = (parseInt(document.querySelector("#input_test_1").value) + 23 );
+    console.log(number);
+}
 
 // E12: Now make sure that F1 is called when the user clicks on #button_test_1
 //      Test it!
 // Note (once you're done) that the previous listener (added above) is still active and working.
 // We can have several listeners for the same event on the same element.
 
-
+document.querySelector("body > button").addEventListener("click", f1);
 
 //  By now, your code should log two lines:
 //    one with the value of the input field
