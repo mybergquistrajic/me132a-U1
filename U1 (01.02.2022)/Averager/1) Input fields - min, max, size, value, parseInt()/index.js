@@ -44,6 +44,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number
 //      Log to the console the current value of #input_test_1. It should
 //      be 13, if you managed the previous E correctly.
 
+console.log(document.querySelector("#input_test_1").value);
 
 // E7:  Add a button <button> to the HTML-file.
 //      Give it the id "button_test_1"
@@ -54,6 +55,11 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number
 //      Test this by manually changing the value of the input field. That is,
 //      by going to the webpage and changing that value.
 
+document.querySelector("body > button").addEventListener("click", button);
+
+function button () {
+    console.log(document.querySelector("#input_test_1").value);
+}
 
 // E9:  NOTE that the value from the input field is a string, even if the input
 //      had type="number". You can see this in two ways:
@@ -66,7 +72,7 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number
 //      This can be done with parseInt().
 //      So parseInt("1") will return the number 1
 //      What will be logged in the lines below?
-let a = "23";
+// let a = "23";
 // console.log( parseInt( a ) + 1 );
 // console.log( a + 1 );
 
