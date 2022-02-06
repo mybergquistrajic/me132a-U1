@@ -104,3 +104,4 @@ document.querySelector("button").addEventListener("click", gridMaker);
 
 // DIRECT CODE
 // Initialise the page directly, no need to wait for user to click first time.
+gridMaker (document.querySelector(`#grid`), document.querySelector("#inputRows").value, document.querySelector("#inputCols").value);
