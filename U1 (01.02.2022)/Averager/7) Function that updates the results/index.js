@@ -20,7 +20,6 @@ each time a number is selected or deselected.
 */
 
 
-
 /*
 
 The idea is to use the functions we created at the beginning (adder, averg) to
@@ -40,6 +39,10 @@ The function getArrayOfSelectedNumbers does the following:
 
   NOTE that you need to set the argument className when you make the function call
 */
+
+
+
+// getArrayOfSelectedNumbers ("selected");
 
 function getArrayOfSelectedNumbers (className) {
 
@@ -66,6 +69,40 @@ function getArrayOfSelectedNumbers (className) {
 
 }
 
+document.querySelector("button").addEventListener("click", gridMaker);
+
+function gridMaker (gridContainer, R, C) {
+  R = document.querySelector("#inputRows").value;
+  C = document.querySelector("#inputCols").value;
+  gridContainer = document.querySelector(`#grid`);
+  gridContainer.innerHTML="";
+  gridContainer.style.gridTemplateRows = `repeat(${R}, 1fr)`;
+  gridContainer.style.gridTemplateColumns = `repeat(${C}, 1fr)`;
+
+  for (let i = 0; i < R * C; i++) {
+    gridContainer.appendChild(createNumber());
+  }
+
+}
+
+function createNumber () {
+  let number = document.createElement('div');
+  number.innerHTML = randomNumber(100);
+  number.addEventListener("click", function(){number.classList.toggle("selected");});
+
+  function randomNumber (max) {
+    return Math.floor(max * Math.random());
+  }
+
+  return number;
+}
+
+function updateResults (className){
+  let res = getArrayOfSelectedNumbers (className);
+  return res;
+}
+
+//console.log(updateResults ("selected"))
 
 /*
 
@@ -116,38 +153,51 @@ VIDEO:  Record a video where you explain what happens on these lines:
         This video must be called joinExplanation.
 
 
+*/
 
-
-
+ /*
 AMOUNT
 This simply states the number of currently selected numbers.
 Since we have them in an array, it's easy to get their amount... do you
 remember how can we know how many elements an array has? Check it out in previous lectures or exercises.
+*/
 
+console.log(getArrayOfSelectedNumbers ("selected").length);
 
-
+/*
 
 SUM
 At the beginning of the exercise, we coded a function that
 takes an array as argument and returns the sum of its elements (if they are numbers).
 This is the time to use it!
+*/
+
+function adder ( _array ) {
+  let sum = 0;
+  for (let i = 0; i < _array.length; i++) { 
+    sum = sum + _array[i];
+  }
+  return sum;
+}
 
 
-
-
+/*
 AVERAGE
 At the beginning of the exercise, we coded a function that
 takes an array as argument and returns the average of its elements (if they are numbers).
 This is the time to use it!
 Note that the average is often a number with a lot of decimals. Use the function roundString
 below to always show a number that has one decimal.
-
-
 */
+
+function averg ( _array ) {
+  // in here you must use adder
+  return roundString(adder(_array)/ _array.length, 1); 
+}
+
 
 function roundString(numberWithManyDecimals, decimals){
   // From: https://stackoverflow.com/a/12698296/2027283
   var rounded = Math.pow(10, decimals);
   return (Math.round(numberWithManyDecimals * rounded) / rounded).toFixed(decimals);
 }
-
