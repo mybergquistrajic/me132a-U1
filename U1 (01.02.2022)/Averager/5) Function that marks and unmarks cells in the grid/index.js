@@ -11,7 +11,6 @@ from the grid by clicking on them.
 
 */
 
-
 /*
 
 STEP 1
@@ -20,6 +19,7 @@ Add CSS-rules for .selected to the CSS-file. A change of
 background-color and color is enough but feel free!
 
 */
+
 
 
 /*
@@ -51,4 +51,30 @@ the classList.
 
 */
 
+
+
+
+function gridMaker (gridContainer, R, C) {
+    gridContainer.style.gridTemplateRows = `repeat(${R}, 1fr)`;
+    gridContainer.style.gridTemplateColumns = `repeat(${C}, 1fr)`;
+  
+    for (let i = 0; i < R * C; i++) {
+      gridContainer.appendChild(createNumber());
+    }
+
+  }
+  
+  function createNumber () {
+    let number = document.createElement('div');
+    number.innerHTML = randomNumber(100);
+    number.addEventListener("click", function(){number.classList.toggle("selected");});
+
+    function randomNumber (max) {
+      return Math.floor(max * Math.random());
+    }
+  
+    return number;
+  }
+  
+  gridMaker(document.querySelector('#grid'), 4, 6);
 
