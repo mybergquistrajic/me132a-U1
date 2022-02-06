@@ -1,31 +1,6 @@
 "use strict";
 
 
-/*
-
-By now:
-You should have a program that, when the user clicks on the button, creates
-a CSS-grid of R rows and C columns and fills the grid with random numbers between 0 and 99.
-The values of R and C come from the input fields.
-
-When the user clicks on a number, that number becomes selected (if it were deselected) or 
-deselected (if it were selected). In other words, by clicking on a number, the user toggles
-the class "selected" for that number.
-
-Also, you have a function updateResults that, when called, updates the results.
-
-Now you need to place the call to that function updateResults in the right place in the code so
-that the results are updated each time the user selects or deselects a number.
-
-
-VIDEO:  Record a video where you explain where you have placed all the lines
-        required to update the results, and why.
-        This video must be called placementExplanation
-
-*/
-
-
-
 function getArrayOfSelectedNumbers (className) {
   let arrayElements = Array.from(document.querySelectorAll("." + className));
   let arrayNumbers = [];
@@ -50,12 +25,13 @@ function gridMaker (gridContainer, R, C) {
   gridContainer.innerHTML="";
   gridContainer.style.gridTemplateRows = `repeat(${R}, 1fr)`;
   gridContainer.style.gridTemplateColumns = `repeat(${C}, 1fr)`;
-  updateResults("selected")
+  updateResults("selected");
 
   for (let i = 0; i < R * C; i++) {
     gridContainer.appendChild(createNumber());
   }
 }
+
 
 function createNumber () {
   let number = document.createElement('div');
@@ -68,6 +44,7 @@ function createNumber () {
 
   return number;
 }
+
 
 function updateResults (className){
   let result = getArrayOfSelectedNumbers (className);
@@ -100,7 +77,6 @@ function adder ( _array ) {
 
 // AVERAGE
 function averg ( _array ) {
-  // in here you must use adder
   if (_array.length < 1){
     return ""; 
   } 
@@ -108,7 +84,6 @@ function averg ( _array ) {
 }
 
 function roundString(numberWithManyDecimals, decimals){
-  // From: https://stackoverflow.com/a/12698296/2027283
   var rounded = Math.pow(10, decimals);
   return (Math.round(numberWithManyDecimals * rounded) / rounded).toFixed(decimals);
 }
